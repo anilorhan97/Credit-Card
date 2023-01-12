@@ -1,0 +1,19 @@
+<div class="container">
+    <form [formGroup]="cardForm" (ngSubmit)="onSubmit()"> <!--formGroup'u tanımladık.-->
+        <app-input label="Ad Soyad" [control]="cardForm.get('name')"></app-input>
+        <!--Değişkenin ismini control verdik. ve ona cardForm.get('name') ile name formcontrolü gönderildi.-->
+        <app-input label="Kart Numarası" [control]="cardForm.get('cardNumber')"></app-input>
+        <div class="columns">
+            <div class="column">
+                <app-input label="Son Kullanım Tarihi" [control]="cardForm.get('skt')"></app-input>
+            </div>
+            <div class="column">
+                <app-input label="Güvenlik Kodu" [control]="cardForm.get('security')"></app-input>
+            </div>
+        </div>
+        <div class="buttons btn">
+            <button class="button is-warning" (click)="resetForm()" type="button">Temizle</button>
+            <button class="button is-primary" [disabled]="cardForm.invalid" type="submit">Kaydet</button> <!--invalid olduğu zaman disabled olur-->
+        </div>
+    </form>
+</div>

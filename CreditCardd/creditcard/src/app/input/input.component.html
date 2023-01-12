@@ -1,0 +1,26 @@
+<div class="field">
+    <label class="label">{{label}}</label>
+    <div class="control">
+        <input class="input" type="text" [formControl] = "control"
+        [ngClass]="{'is-danger': showErrors()}" 
+        > <!--bURADAKİ CONTROL cardform.getnamedir..-->
+    </div>
+</div>
+<ng-container
+*ngIf="showErrors()">
+    <div class="help is-danger" *ngIf="control.errors?.['required']"> <!--null olma durumunda soru işareti ile objenin null olma durumu esgeçeriz..-->
+        *Zorunlu Alan
+    </div>
+    <div class="help is-danger" *ngIf="control.errors?.['minlength']"> <!--null olma durumunda soru işareti ile objenin null olma durumu esgeçeriz..-->
+        Girdiğiniz isim {{control.errors?.['minlength']?.['actualLength']}}
+        karakter içermektedir. Minimum 
+        Girdiğiniz isim {{control.errors?.['minlength']?.['requiredLength']}}
+        karakter olmalıdır. <!--minlength ile ts'den verilen kurala göre bakarız.-->
+    </div>
+    <div class="help is-danger" *ngIf="control.errors?.['maxlength']"> <!--null olma durumunda soru işareti ile objenin null olma durumu esgeçeriz..-->
+        Girdiğiniz isim {{control.errors?.['maxlength']?.['actualLength']}}
+        karakter içermektedir. Maximum 
+        Girdiğiniz isim {{control.errors?.['maxlength']?.['requiredLength']}}
+        karakter olmalıdır. <!--minlength ile ts'den verilen kurala göre bakarız.-->
+    </div>
+</ng-container>
